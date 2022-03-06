@@ -42,5 +42,4 @@ public class TestCliente {
         assertNotEquals(saldoAtualTelefone,saldoAntigoTelefone);
 
     }
-
 }

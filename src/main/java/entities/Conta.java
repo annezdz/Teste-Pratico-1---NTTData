@@ -1,5 +1,7 @@
 package entities;
 
+import exceptions.ContaException;
+
 import java.util.Objects;
 
 public class Conta {
@@ -42,5 +44,17 @@ public class Conta {
                 "saldo=" + saldo +
                 ", vl_recarga=" + vl_recarga +
                 '}';
+    }
+
+    protected void debitarRecargaDaConta(int valorRecarga) {
+        int saldo = this.getSaldo();
+        if(valorRecarga > 0) {
+            if (valorRecarga <= this.getSaldo()) {
+                this.setSaldo(saldo - valorRecarga);
+            }
+            else {
+                throw new ContaException("Saldo Insuficiente!");
+            }
+        }
     }
 }

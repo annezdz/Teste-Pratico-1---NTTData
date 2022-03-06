@@ -1,8 +1,5 @@
 package entities;
 
-import exceptions.ContaException;
-import exceptions.RecargaException;
-
 import java.util.Objects;
 
 public class Cliente {
@@ -57,31 +54,8 @@ public class Cliente {
                 '}';
     }
 
-    public void efetuandoRecarga(int valorRecarga) {
-            debitarRecargaDaConta(valorRecarga);
-            realizarRecarga(valorRecarga);
-    }
-
-
-    private void debitarRecargaDaConta(int valorRecarga) {
-        int saldo = conta.getSaldo();
-        if(valorRecarga > 0) {
-            if (valorRecarga <= conta.getSaldo()) {
-                this.conta.setSaldo(saldo - valorRecarga);
-            }
-            else {
-                throw new ContaException("Saldo Insuficiente!");
-            }
-        }
-    }
-
-
-    private void realizarRecarga(int valorRecarga) {
-        int saldoTelefone = telefone.getSaldo();
-        if(valorRecarga > 0) {
-            this.telefone.setSaldo(saldoTelefone + valorRecarga);
-        } else {
-            throw new RecargaException("Valor da Recarga Inválido!");
-        }
+    public void recarregarCelular(int valorRecarga) {
+            conta.debitarRecargaDaConta(valorRecarga);
+            telefone.realizarRecarga(valorRecarga);
     }
 }

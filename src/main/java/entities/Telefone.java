@@ -1,5 +1,7 @@
 package entities;
 
+import exceptions.RecargaException;
+
 import java.util.Objects;
 
 public class Telefone {
@@ -43,5 +45,14 @@ public class Telefone {
                 "numero_linha='" + numero_linha + '\'' +
                 ", saldo=" + saldo +
                 '}';
+    }
+
+    protected void realizarRecarga(int valorRecarga) {
+        int saldoTelefone = this.getSaldo();
+        if(valorRecarga > 0) {
+            this.setSaldo(saldoTelefone + valorRecarga);
+        } else {
+            throw new RecargaException("Valor da Recarga Inválido!");
+        }
     }
 }

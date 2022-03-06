@@ -14,7 +14,6 @@ public class TestConta {
     public void init() {
 
         conta = new Conta(10);
-
     }
 
     @DisplayName("Não deveria permitir alterar saldo da conta (Set)")
@@ -25,7 +24,5 @@ public class TestConta {
         this.conta.setSaldo(1000);
         int saldoNovo = conta.getSaldo();
         assertNotEquals(saldoNovo,saldoAntigo);
-
     }
-
 }
